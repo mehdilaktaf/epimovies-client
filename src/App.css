@@ -1,6 +1,6 @@
 body {
-	background: #202020;
-	color: #eeeeee;
+	background: #4e4e4e;
+	color: #f3f3f3;
   font-family: Roboto;
 }
 
@@ -27,7 +27,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(168, 167, 167);
 }
 
 .App-link {
@@ -54,7 +54,7 @@ label {
 }
 
 .card {
-  background-color: #f7f7f7;
+  background-color: #413f3f;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
@@ -110,5 +110,5 @@ label {
 }
 
 .jumbotron{
-  color:rgba(0, 0, 0, 0.3)
+  color: rgb(78, 78, 78);
 }

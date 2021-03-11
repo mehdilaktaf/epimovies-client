@@ -12,13 +12,20 @@ export default class Home extends Component {
     
     this.state = {
         movies: [],
+        viewed: [],
         content: ""
     };
   }
 
   componentDidMount() {
-    MovieService.getAllMovies().then(
-      response => {
+    this.retrieveMovies();
+    this.retrieveViewedMovies();
+  }
+  
+
+  retrieveMovies(){
+    MovieService.getAllMovies()
+    .then(response => {
         this.setState({
             movies: response.data
         });
@@ -34,8 +41,42 @@ export default class Home extends Component {
     );
   }
 
+  retrieveViewedMovies(){
+    MovieService.getViewedMovies()
+    .then(response => {
+        this.setState({
+            viewed: response.data
+        });
+      },
+      error => {
+        this.setState({
+          content:
+            (error.response && error.response.data) ||
+            error.message ||
+            error.toString()
+        });
+      }
+    );
+  }
+
+  clickWatch(movieId) {
+    MovieService.watchMovie(movieId)
+    .then(response => {
+        console.log(response)
+      },
+      error => {
+        this.setState({
+          content:
+            (error.response && error.response.data) ||
+            error.message ||
+            error.toString()
+        });
+      }
+    );
+  }
+
   render() {
-    const {movies, content} = this.state;
+    const {movies, viewed, content} = this.state;
     return (      
 		<div className='container-fluid movie-app'>
 			<div className='row d-flex align-items-center mt-4 mb-4'>
@@ -45,20 +86,20 @@ export default class Home extends Component {
 			<div className='row'>
 				<MovieList
 					movies={movies}
-					// handleFavouritesClick={addFavouriteMovie}
+					handleWatchClick={this.clickWatch}
 					WatchComponent={WatchMovie}
 				/>
 			</div>
-			{/* <div className='row d-flex align-items-center mt-4 mb-4'> */}
-				{/* <MovieListHeading heading='Favourites' /> */}
-			{/* </div> */}
-			{/* <div className='row'>
+			<div className='row d-flex align-items-center mt-4 mb-4'>
+				<MovieListHeading heading='Viewed' />
+			</div>
+			<div className='row'>
 				<MovieList
 					movies={viewed}
-					handleFavouritesClick={removeFavouriteMovie}
-					favouriteComponent={RemoveFavourites}
+					// handleFavouritesClick={removeFavouriteMovie}
+					// WatchComponent={WatchMovie}
 				/>
-			</div> */}
+			</div>
 		</div>
     );
   }

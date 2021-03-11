@@ -1,23 +1,27 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const {API_URL} = require('../config')
+const config = require('../config')
 
 class MovieService {
   getAllMovies() {
-    return axios.get(API_URL + '/movies/', { headers: authHeader() });
+    return axios.get(config.API_URL + '/movies/', { headers: authHeader() });
+  }  
+  
+  getViewedMovies() {
+    return axios.get(config.API_URL + '/movies/viewed/', { headers: authHeader() });
   }
 
-  getMovieBoard() {
-    return axios.get(API_URL + 'Movie', { headers: authHeader() });
+  watchMovie(movieId){
+    return axios.post(config.API_URL + `/movies/${movieId}`,{body: "anything"}, { headers: authHeader() });
   }
 
   getModeratorBoard() {
-    return axios.get(API_URL + 'mod', { headers: authHeader() });
+    return axios.get(config.API_URL + 'mod', { headers: authHeader() });
   }
 
   getAdminBoard() {
-    return axios.get(API_URL + 'admin', { headers: authHeader() });
+    return axios.get(config.API_URL + 'admin', { headers: authHeader() });
   }
 }
 

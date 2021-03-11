@@ -10,6 +10,11 @@ export default class Profile extends Component {
     };
   }
 
+  capitalize(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    
+
   render() {
     const { currentUser } = this.state;
 
@@ -17,7 +22,7 @@ export default class Profile extends Component {
       <div className="container">
         <header className="jumbotron">
           <h3>
-            <strong>{currentUser.username}</strong> Profile
+            <strong>{this.capitalize(currentUser.username) + "'s Profile"}</strong>
           </h3>
         </header>
         <p>
