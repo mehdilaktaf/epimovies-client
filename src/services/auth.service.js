@@ -4,6 +4,7 @@ const {API_URL} = require('../config')
 
 class AuthService {
   login(username, password) {
+    console.log(API_URL)
     return axios
       .post(API_URL + "/auth/signin", {
         username,

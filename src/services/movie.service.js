@@ -5,6 +5,7 @@ const config = require('../config')
 
 class MovieService {
   getAllMovies() {
+    
     return axios.get(config.API_URL + '/movies/', { headers: authHeader() });
   }  
   
