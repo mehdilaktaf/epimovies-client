@@ -41,6 +41,10 @@ class App extends Component {
     AuthService.logout();
   }
 
+  capitalize(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    
   render() {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
@@ -76,7 +80,7 @@ class App extends Component {
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
-                  Movies
+                  User Board
                 </Link>
               </li>
             )}
@@ -86,12 +90,12 @@ class App extends Component {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
-                  {currentUser.username}
+                  {this.capitalize(currentUser.username) + "'s Profile"}
                 </Link>
               </li>
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
+                  Logout
                 </a>
               </li>
             </div>

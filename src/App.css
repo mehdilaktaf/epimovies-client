@@ -108,3 +108,7 @@ label {
 	padding: 20px;
 	text-align: center;
 }
+
+.jumbotron{
+  color:rgba(0, 0, 0, 0.3)
+}
