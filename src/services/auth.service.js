@@ -1,12 +1,11 @@
 import axios from "axios";
-const {API_URL} = require('../config')
-
+const config = require('../config');
 
 class AuthService {
   login(username, password) {
-    console.log(API_URL)
+    console.log(process.env.API_URL)
     return axios
-      .post(API_URL + "/auth/signin", {
+      .post(config.api_url + "/auth/signin", {
         username,
         password
       })
@@ -24,7 +23,7 @@ class AuthService {
   }
 
   register(username, email, password) {
-    return axios.post(API_URL + "/auth/signup", {
+    return axios.post(config.api_url + "/auth/signup", {
       username,
       email,
       password

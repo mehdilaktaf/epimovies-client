@@ -1,3 +1,3 @@
 module.exports = Object.freeze({ 
-    API_URL: process.env.API_URL || "http://localhost:5000/api"
+    api_url: process.env.API_URL || "http://localhost:5000/api"
 });
