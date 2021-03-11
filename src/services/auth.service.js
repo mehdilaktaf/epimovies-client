@@ -1,11 +1,11 @@
 import axios from "axios";
+const {API_URL} = require('../config')
 
-const API_URL = "https://epimovies-server.herokuapp.com/api/auth/";
 
 class AuthService {
   login(username, password) {
     return axios
-      .post(API_URL + "signin", {
+      .post(API_URL + "/auth/signin", {
         username,
         password
       })

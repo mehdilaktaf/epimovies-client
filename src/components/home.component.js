@@ -1,21 +1,26 @@
 import React, { Component } from "react";
 
-import UserService from "../services/user.service";
+import MovieService from "../services/movie.service";
+import MovieListHeading from "./movie-list-heading.component";
+import MovieList from "./movie-list.component";
+import SearchBox from "./search-box.component";
+import WatchMovie from "./watch-movie.component";
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
-      content: ""
+        movies: [],
+        content: ""
     };
   }
 
   componentDidMount() {
-    UserService.getPublicContent().then(
+    MovieService.getAllMovies().then(
       response => {
         this.setState({
-          content: response.data
+            movies: response.data
         });
       },
       error => {
@@ -30,12 +35,31 @@ export default class Home extends Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <header className="jumbotron">
-          <h3>{this.state.content}</h3>
-        </header>
-      </div>
+    const {movies, content} = this.state;
+    return (      
+		<div className='container-fluid movie-app'>
+			<div className='row d-flex align-items-center mt-4 mb-4'>
+				<MovieListHeading heading='Movies' />
+				{/* <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} /> */}
+			</div>
+			<div className='row'>
+				<MovieList
+					movies={movies}
+					// handleFavouritesClick={addFavouriteMovie}
+					WatchComponent={WatchMovie}
+				/>
+			</div>
+			{/* <div className='row d-flex align-items-center mt-4 mb-4'> */}
+				{/* <MovieListHeading heading='Favourites' /> */}
+			{/* </div> */}
+			{/* <div className='row'>
+				<MovieList
+					movies={viewed}
+					handleFavouritesClick={removeFavouriteMovie}
+					favouriteComponent={RemoveFavourites}
+				/>
+			</div> */}
+		</div>
     );
   }
 }
