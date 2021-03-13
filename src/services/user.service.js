@@ -1,22 +1,22 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-const {API_URL} = require('../config')
+const config = require('../config');
 
 class UserService {
   getPublicContent() {
-    return axios.get(API_URL + '/test/all');
+    return axios.get(config.api_url + '/test/all');
   }
 
   getUserBoard() {
-    return axios.get(API_URL + '/test/user', { headers: authHeader() });
+    return axios.get(config.api_url + '/test/user', { headers: authHeader() });
   }
 
   getModeratorBoard() {
-    return axios.get(API_URL + '/test/mod', { headers: authHeader() });
+    return axios.get(config.api_url + '/test/mod', { headers: authHeader() });
   }
 
   getAdminBoard() {
-    return axios.get(API_URL + '/test/admin', { headers: authHeader() });
+    return axios.get(config.api_url + '/test/admin', { headers: authHeader() });
   }
 }
 

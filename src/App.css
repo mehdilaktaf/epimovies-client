@@ -76,9 +76,28 @@ label {
   border-radius: 50%;
 }
 
-.movie-app > .row {
-	overflow-x: auto;
+.row {
+	overflow-x: scroll;
 	flex-wrap: nowrap;
+}
+
+.row::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: rgb(63, 62, 62);
+  border-radius:20px;
+}
+.row::-webkit-scrollbar-thumb {
+  background:  rgb(36, 35, 35);
+  border-radius:20px;
+}
+
+.d-flex::-webkit-scrollbar {
+  display: none;
+}
+
+img{
+  border-radius:5px;
 }
 
 .image-container {
@@ -90,7 +109,7 @@ label {
 
 .image-container:hover {
 	cursor: pointer;
-	transform: scale(1.1);
+	transform: scale(1.05);
 }
 
 .image-container:hover .overlay {
@@ -101,6 +120,7 @@ label {
 	position: absolute;
 	background: rgba(0, 0, 0, 0.8);
 	width: 100%;
+  border-radius:5px;
 	transition: 0.5s ease;
 	opacity: 0;
 	bottom: 0;
