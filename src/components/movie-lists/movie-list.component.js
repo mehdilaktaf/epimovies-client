@@ -1,18 +1,22 @@
 import React,  { Component } from 'react';
-
+import { Link } from "react-router-dom";
 
 class MovieList extends Component {
 	constructor(props) {
 		super(props);
 		this.WatchComponent = props.WatchComponent;
 		this.handler = this.props.handleWatchClick;
+		
 	}
 	render() {
 		return (
 			<>
 				{this.props.movies.map((movie, index) => (
-					<div className='image-container d-flex justify-content-start m-2'>
+					<div className='image-container d-flex justify-content-start m-2'
+					>
+						<Link className='image-container d-flex justify-content-start m-2' to={'/movies/'+ movie.id}>
 						<img src={movie.img_url} alt='movie'></img>
+						</Link>
 						{this.WatchComponent ? (
 							<div
 							key={index}
@@ -21,11 +25,9 @@ class MovieList extends Component {
 							>
 							<this.WatchComponent /> 
 							</div>
-						) : ( null )}
-						
-							
-						
+						) : ( null )}	
 					</div>
+					
 				))}
 			</>
 		);

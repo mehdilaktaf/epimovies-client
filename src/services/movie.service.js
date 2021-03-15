@@ -55,7 +55,7 @@ class MovieService {
     return axios.get(config.api_url + '/movies/views/top', { headers: authHeader() });
   }
 
-  search(search_text){
+  filterMovies(search_text){
     return axios.get(config.api_url + `/movies/search/${search_text}`, { headers: authHeader() });
   }
 

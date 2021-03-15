@@ -76,6 +76,13 @@ label {
   border-radius: 50%;
 }
 
+.btn{
+  margin: 10px 0px;
+}
+
+.col-md-auto{
+  margin-right: 40px;
+}
 .row {
 	overflow-x: scroll;
 	flex-wrap: nowrap;
