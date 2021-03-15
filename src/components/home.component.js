@@ -9,7 +9,6 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     
-    // const [viewed, setViewed] = useState([]);
     this.state = {
         movies: [],
         viewed: [],
@@ -157,45 +156,45 @@ export default class Home extends Component {
     return (      
 		<div className='container-fluid movie-app'>
         <div>
-          <div className='row d-flex align-items-center mt-4 mb-4'>
+          <div className='movies-row row d-flex align-items-center mt-4 mb-4'>
             <MovieListHeading heading='Movies' />
             <SearchBox search_handler={this.search_handler} />
           </div>
-          <div className='row'>
+          <div className='movies-row row'>
             <MovieList
               movies={movies}
               handleWatchClick={this.clickWatch}
               WatchComponent={WatchMovie}
             />
           </div>
-          <div className='row d-flex align-items-center mt-4 mb-4'>
+          <div className='movies-row row d-flex align-items-center mt-4 mb-4'>
             {this.hasViewed ? (null): (
               <MovieListHeading heading='Last Seen Movies' />
             )}	
           </div>
           <div>
             {hasViewed ? (null): (
-              <div className='row'>
+              <div className='movies-row row'>
                 <MovieList
                   movies={viewed}
                 />
               </div>
             )}
           </div>
-          <div className='row d-flex align-items-center mt-4 mb-4'>
+          <div className='movies-row row d-flex align-items-center mt-4 mb-4'>
             <MovieListHeading heading='Popular Movies' />
           </div>
-          <div className='row'>
+          <div className='movies-row row'>
             <MovieList
               movies={top_viewed}
               handleWatchClick={this.clickWatch}
               WatchComponent={WatchMovie}
             />
           </div>
-          <div className='row d-flex align-items-center mt-4 mb-4'>
+          <div className='movies-row row d-flex align-items-center mt-4 mb-4'>
             <MovieListHeading heading='Top Rated Movies' />
           </div>
-          <div className='row'>
+          <div className='movies-row row'>
             <MovieList
               movies={top_rated}
               handleWatchClick={this.clickWatch}
