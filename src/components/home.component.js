@@ -130,7 +130,6 @@ export default class Home extends Component {
     var query = element.target.value
     if(element.target.value === "" || element.target.value === " ")
       query = "$-*empty*-$"
-    console.log("query: ", query);
 
     MovieService.filterMovies(query)
     .then(response => {

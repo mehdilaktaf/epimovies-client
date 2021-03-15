@@ -27,7 +27,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(process.env.REACT_APP_API_URL)
     const user = AuthService.getCurrentUser();
 
     if (user) {

@@ -12,7 +12,7 @@ class MovieDetails extends Component {
         this.state = {
             movie: undefined,
             realease_date: undefined,
-            ratings: undefined,
+            ratings: [],
             grade: undefined
         };
         
@@ -34,6 +34,7 @@ class MovieDetails extends Component {
             }
             MovieService.getAllRatings(movieId)
             .then(ratings => {
+               
                 if(ratings.status === 200) {
                     this.setState({
                         ratings: ratings.data,
@@ -91,7 +92,7 @@ class MovieDetails extends Component {
                             </div>
                             <div className="row d-flex ratings">
 
-                                {this.state.ratings !== undefined ? (
+                                {this.state.ratings.length !== 0 ? (
                                     <>
                                     <MovieListHeading heading='Ratings'/>
                                     <RatingList ratings={this.state.ratings} />
