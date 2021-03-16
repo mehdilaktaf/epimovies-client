@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MovieService from "../services/movie.service";
+import AuthService from "../services/auth.service";
 import MovieListHeading from "./movie-lists/movie-list-heading.component";
 import MovieList from "./movie-lists/movie-list.component";
 import SearchBox from "./movie-lists/search-box.component";
@@ -150,16 +151,18 @@ export default class Home extends Component {
   }
 
   render() {
-    const {movies, viewed, top_viewed, top_rated} = this.state;    
-    var hasViewed = (viewed === []);
+    const {movies, viewed, top_viewed, top_rated} = this.state;
+    const user = AuthService.getCurrentUser();
+    var hasViewed = (viewed.length === 0);
     return (      
 		<div className='container-fluid movie-app'>
+      {user ? (
         <div>
           <div className='movies-row row d-flex align-items-center mt-4 mb-4'>
             <MovieListHeading heading='Movies' />
             <SearchBox search_handler={this.search_handler} />
           </div>
-          <div className='movies-row row'>
+          <div className='movies-row row '>
             <MovieList
               movies={movies}
               handleWatchClick={this.clickWatch}
@@ -167,7 +170,7 @@ export default class Home extends Component {
             />
           </div>
           <div className='movies-row row d-flex align-items-center mt-4 mb-4'>
-            {this.hasViewed ? (null): (
+            {hasViewed ? (null): (
               <MovieListHeading heading='Last Seen Movies' />
             )}	
           </div>
@@ -201,6 +204,8 @@ export default class Home extends Component {
             />
           </div>
         </div>
+
+      ): ( <h3 className="jumbotron">Please Log In.</h3> )}
         
         
 		</div>

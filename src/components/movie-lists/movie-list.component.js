@@ -14,7 +14,7 @@ class MovieList extends Component {
 				{this.props.movies.map((movie, index) => (
 					<div className='image-container d-flex justify-content-start m-2'
 					>
-						<Link className='image-container d-flex justify-content-start m-2' to={'/movies/'+ movie.id}>
+						<Link className='d-flex justify-content-start' to={'/movies/'+ movie.id}>
 						<img src={movie.img_url} alt='movie'></img>
 						</Link>
 						{this.WatchComponent ? (
